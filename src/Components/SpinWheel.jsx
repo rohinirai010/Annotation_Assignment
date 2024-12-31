@@ -136,15 +136,15 @@ const SpinWheel = () => {
       setIsSpinning(true);
       setHasSpun(true);
       spinningSound.play(); // Playing spinning sound when wheel starts
-
+  
       const spins = 5 + Math.floor(Math.random() * 5); // Random number of full rotations
       const extraDegrees = Math.floor(Math.random() * 360); // Random additional degrees
       const totalRotation = spins * 360 + extraDegrees; // Total rotation for the wheel
-
+  
       // Setting rotation angle to match the total rotation
       const soundDuration = spinningSound.duration * 1000;
       setRotation(rotation + totalRotation);
-
+  
       // Calculating prize index
       const finalRotation = totalRotation % 360;
       const prizeIndex =
@@ -152,18 +152,23 @@ const SpinWheel = () => {
           (360 - finalRotation + 360 / rewards.length / 2) /
             (360 / rewards.length)
         ) % rewards.length;
-
+  
       setTimeout(
         () => {
           setIsSpinning(false);
           stopSound.play();
-          setPrize(rewards[prizeIndex]); // Set prize based on calculated index
-          setShowModal(true); // Show the modal
+  
+          // Adding a delay before showing modal
+          setTimeout(() => {
+            setPrize(rewards[prizeIndex]); // Set prize based on calculated index
+            setShowModal(true); // Show the modal
+          }, 1000);
         },
         skipAnimation ? 0 : soundDuration
-      ); // Use sound duration for timeout
+      );
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center xl:justify-center min-h-screen bg-[#181E1A] p-4">
