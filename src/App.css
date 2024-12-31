@@ -1,0 +1,116 @@
+/* Wheel Styles */
+.wheel-section {
+  background: radial-gradient(circle at center, rgba(147, 51, 234, 0.1) 0%, rgba(13, 11, 33, 0) 70%);
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.wheel-segment {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 50%, 32% 0, 68% 0);
+  background: radial-gradient(circle at center, #222824 64%, #5E96FF 87%);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10rem;
+}
+
+.wheel-segment.even {
+  background: radial-gradient(circle at center, #222824 64%, #F445FD 84%);
+  border-radius: 10rem;
+}
+
+.prize-icon {
+  filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.6)); 
+}
+
+.prize-value {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.center-circle {
+  background: radial-gradient(circle at center, #ffffff 54%, #5E96FF 69%, #E657FB 60%);
+  box-shadow: 
+    0 0 20px rgba(147, 51, 234, 0.2),
+    inset 0 0 20px rgba(147, 51, 234, 0.1);
+}
+
+.pointer {
+  background: radial-gradient(circle at center, #ffffff 31%, #5E96FF 61%, #E657FB 65%);
+  filter: drop-shadow(0 0 8px rgba(147, 51, 234, 0.5));
+  border-radius: 1rem;
+}
+
+/* Animation keyframes */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  animation: confetti-fall 4s linear forwards;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Modal styles */
+.modal-backdrop {
+  background: rgba(13, 11, 33, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.9) 0%, rgba(88, 28, 135, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 480px) {
+  .wheel-section {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .prize-icon {
+    font-size: 1.5rem !important;
+  }
+
+  .prize-value span {
+    font-size: 0.75rem !important;
+  }
+
+  .center-circle {
+    inset: 35% !important;
+  }
+
+  .center-circle .text-xl {
+    font-size: 1rem !important;
+  }
+
+  .center-circle .text-sm {
+    font-size: 0.75rem !important;
+  }
+
+  .modal-content {
+    margin: 1rem;
+    padding: 1rem !important;
+  }
+
+  .modal-content h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .modal-content p {
+    font-size: 1rem !important;
+  }
+}
